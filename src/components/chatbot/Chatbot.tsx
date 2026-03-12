@@ -2,9 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useChatbot } from "@/src/hooks/useChatbot";
+import { PopupModal } from "react-calendly";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
+  const [showCalendly, setShowCalendly] = useState(false);
 
   const { node, messages, selectOption, resetChat } = useChatbot();
 
@@ -13,6 +15,12 @@ export default function Chatbot() {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    if (node?.message === "Opening booking calendar for your appointment.") {
+      setShowCalendly(true);
+    }
+  }, [node]);
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 w-full max-w-[350px]">
@@ -50,7 +58,7 @@ export default function Chatbot() {
           </div>
 
           {/* Chat Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[400px]">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-100">
 
             {messages.map((msg, index) => (
               <div
@@ -81,7 +89,11 @@ export default function Chatbot() {
 
             {/* Options */}
             <div className="flex flex-col gap-2 pl-10">
-              {node?.options?.map((option, index) => (
+              {node?.options?.map(
+                (
+                  option: { label: string; next: string },
+                  index: number
+                ) => (
                 <button
                   key={index}
                   onClick={() => selectOption(option.label, option.next)}
@@ -123,6 +135,22 @@ export default function Chatbot() {
         </button>
       )}
 
+      {/* Calendly Modal */}
+      {showCalendly && (
+        <PopupModal
+          url="https://calendly.com/goelkomal836/new-meeting"
+          onModalClose={() => setShowCalendly(false)}
+          open={showCalendly}
+          rootElement={document.body}
+          pageSettings={{
+            hideEventTypeDetails: false,
+            hideLandingPageDetails: false,
+            primaryColor: "2563eb",
+            textColor: "0f172a",
+            backgroundColor: "ffffff",
+          }}
+        />
+      )}
     </div>
   );
 }
