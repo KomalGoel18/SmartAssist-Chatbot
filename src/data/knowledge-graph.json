@@ -1,0 +1,184 @@
+{
+  "root": "start",
+  "nodes": {
+    "start": {
+      "id": "start",
+      "type": "choice",
+      "content": "Hello! How can I help you today?",
+      "options": [
+        { "label": "Services", "next": "services" },
+        { "label": "Pricing", "next": "pricing" },
+        { "label": "Contact Support", "next": "support" },
+        { "label": "Book a Demo", "next": "booking_date" }
+      ]
+    },
+
+    "services": {
+      "id": "services",
+      "type": "choice",
+      "content": "Choose a service you are interested in:",
+      "options": [
+        { "label": "Web Development", "next": "web" },
+        { "label": "Mobile App Development", "next": "mobile" },
+        { "label": "UI/UX Design", "next": "design" },
+        { "label": "Maintenance", "next": "maintenance" },
+        { "label": "Back", "next": "start" }
+      ]
+    },
+
+    "web": {
+      "id": "web",
+      "type": "info",
+      "content": "We build responsive business websites, dashboards, and scalable web apps.",
+      "options": [
+        { "label": "Pricing", "next": "pricing" },
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "services" }
+      ]
+    },
+
+    "mobile": {
+      "id": "mobile",
+      "type": "info",
+      "content": "We develop Android, iOS, and cross-platform mobile applications.",
+      "options": [
+        { "label": "Pricing", "next": "pricing" },
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "services" }
+      ]
+    },
+
+    "design": {
+      "id": "design",
+      "type": "info",
+      "content": "We create modern UI/UX systems, prototypes, and product interfaces.",
+      "options": [
+        { "label": "Pricing", "next": "pricing" },
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "services" }
+      ]
+    },
+
+    "maintenance": {
+      "id": "maintenance",
+      "type": "info",
+      "content": "We offer bug fixing, upgrades, monitoring, and technical maintenance.",
+      "options": [
+        { "label": "Pricing", "next": "pricing" },
+        { "label": "Back", "next": "services" }
+      ]
+    },
+
+    "pricing": {
+      "id": "pricing",
+      "type": "choice",
+      "content": "Choose pricing category:",
+      "options": [
+        { "label": "Basic Plan", "next": "basic" },
+        { "label": "Professional Plan", "next": "pro" },
+        { "label": "Enterprise Plan", "next": "enterprise" },
+        { "label": "Back", "next": "start" }
+      ]
+    },
+
+    "basic": {
+      "id": "basic",
+      "type": "info",
+      "content": "Basic Plan starts at ₹15,000 for starter projects.",
+      "options": [
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "pricing" }
+      ]
+    },
+
+    "pro": {
+      "id": "pro",
+      "type": "info",
+      "content": "Professional Plan starts at ₹50,000 for advanced projects.",
+      "options": [
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "pricing" }
+      ]
+    },
+
+    "enterprise": {
+      "id": "enterprise",
+      "type": "info",
+      "content": "Enterprise pricing is customized based on requirements.",
+      "options": [
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "pricing" }
+      ]
+    },
+
+    "support": {
+      "id": "support",
+      "type": "choice",
+      "content": "Choose support type:",
+      "options": [
+        { "label": "Technical Issue", "next": "technical" },
+        { "label": "Sales Inquiry", "next": "sales" },
+        { "label": "WhatsApp Support", "next": "whatsapp" },
+        { "label": "Back", "next": "start" }
+      ]
+    },
+
+    "technical": {
+      "id": "technical",
+      "type": "info",
+      "content": "Our technical team usually responds within 24 hours.",
+      "options": [
+        { "label": "Back", "next": "support" }
+      ]
+    },
+
+    "sales": {
+      "id": "sales",
+      "type": "info",
+      "content": "Our sales team can guide you through service selection.",
+      "options": [
+        { "label": "Book Demo", "next": "booking_date" },
+        { "label": "Back", "next": "support" }
+      ]
+    },
+
+    "whatsapp": {
+      "id": "whatsapp",
+      "type": "info",
+      "content": "WhatsApp support can be integrated here later.",
+      "options": [
+        { "label": "Back", "next": "support" }
+      ]
+    },
+
+    "booking_date": {
+      "id": "booking_date",
+      "type": "input",
+      "content": "Please enter your preferred date for the demo (e.g. 2026-04-01):",
+      "dataKey": "booking_date",
+      "next": "booking_time"
+    },
+
+    "booking_time": {
+      "id": "booking_time",
+      "type": "input",
+      "content": "What time works best for you? (e.g. 10:00 AM):",
+      "dataKey": "booking_time",
+      "next": "booking_email"
+    },
+
+    "booking_email": {
+      "id": "booking_email",
+      "type": "input",
+      "content": "Please enter your email address so we can send you a confirmation:",
+      "dataKey": "booking_email",
+      "next": "booking_confirm"
+    },
+
+    "booking_confirm": {
+      "id": "booking_confirm",
+      "type": "terminal",
+      "content": "Thank you! We'll confirm your booking shortly. Our team will reach out to the email you provided."
+    }
+  }
+}
