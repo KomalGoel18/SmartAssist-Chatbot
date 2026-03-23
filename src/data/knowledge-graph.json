@@ -4,181 +4,103 @@
     "start": {
       "id": "start",
       "type": "choice",
-      "content": "Hello! How can I help you today?",
+      "content": "Hi, I’m here to support you. 💙\n\nYou’re not alone in this journey. Tell me, what’s concerning you about your child?",
       "options": [
-        { "label": "Services", "next": "services" },
-        { "label": "Pricing", "next": "pricing" },
-        { "label": "Contact Support", "next": "support" },
-        { "label": "Book a Demo", "next": "booking_date" }
+        { "label": "My child is not speaking", "next": "not_speaking" },
+        { "label": "My child doesn’t respond", "next": "not_responding" },
+        { "label": "I think my child may have autism", "next": "autism_doubt" },
+        { "label": "I want guidance on what to do next", "next": "guidance" }
       ]
     },
 
-    "services": {
-      "id": "services",
+    "not_speaking": {
+      "id": "not_speaking",
       "type": "choice",
-      "content": "Choose a service you are interested in:",
+      "content": "I understand how worrying that can feel. Many parents go through this.\n\nLet me help you better — does your child try to communicate in other ways?",
       "options": [
-        { "label": "Web Development", "next": "web" },
-        { "label": "Mobile App Development", "next": "mobile" },
-        { "label": "UI/UX Design", "next": "design" },
-        { "label": "Maintenance", "next": "maintenance" },
-        { "label": "Back", "next": "start" }
+        { "label": "Yes, through gestures or sounds", "next": "gesture" },
+        { "label": "No, very little communication", "next": "low_comm" }
       ]
     },
 
-    "web": {
-      "id": "web",
+    "gesture": {
+      "id": "gesture",
       "type": "info",
-      "content": "We build responsive business websites, dashboards, and scalable web apps.",
+      "content": "That’s actually a positive sign. 💙\n\nYour child is trying to communicate — we just need to guide it towards speech through the right approach.\n\nIn our method, we focus on listening first, then speech develops naturally.",
       "options": [
-        { "label": "Pricing", "next": "pricing" },
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "services" }
+        { "label": "What should I do next?", "next": "guidance" },
+        { "label": "Talk to an expert", "next": "booking_name" }
       ]
     },
 
-    "mobile": {
-      "id": "mobile",
+    "low_comm": {
+      "id": "low_comm",
       "type": "info",
-      "content": "We develop Android, iOS, and cross-platform mobile applications.",
+      "content": "I know this can feel overwhelming.\n\nBut don’t worry — with the right guidance, children can improve significantly.\n\nThe key is starting early and following the right approach at home.",
       "options": [
-        { "label": "Pricing", "next": "pricing" },
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "services" }
+        { "label": "Guide me", "next": "guidance" },
+        { "label": "Talk to an expert", "next": "booking_name" }
       ]
     },
 
-    "design": {
-      "id": "design",
+    "not_responding": {
+      "id": "not_responding",
       "type": "info",
-      "content": "We create modern UI/UX systems, prototypes, and product interfaces.",
+      "content": "When a child doesn’t respond, it can feel disconnecting.\n\nThis often relates to how they process sounds and interaction.\n\nWe focus on building connection first — once that improves, response follows.",
       "options": [
-        { "label": "Pricing", "next": "pricing" },
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "services" }
+        { "label": "How do I improve connection?", "next": "guidance" },
+        { "label": "Talk to an expert", "next": "booking_name" }
       ]
     },
 
-    "maintenance": {
-      "id": "maintenance",
+    "autism_doubt": {
+      "id": "autism_doubt",
       "type": "info",
-      "content": "We offer bug fixing, upgrades, monitoring, and technical maintenance.",
+      "content": "It’s okay to feel unsure.\n\nAutism is not something to fear — it just means your child experiences the world differently.\n\nWith the right support, children can grow, learn, and thrive.",
       "options": [
-        { "label": "Pricing", "next": "pricing" },
-        { "label": "Back", "next": "services" }
+        { "label": "What signs should I look for?", "next": "guidance" },
+        { "label": "Talk to an expert", "next": "booking_name" }
       ]
     },
 
-    "pricing": {
-      "id": "pricing",
-      "type": "choice",
-      "content": "Choose pricing category:",
-      "options": [
-        { "label": "Basic Plan", "next": "basic" },
-        { "label": "Professional Plan", "next": "pro" },
-        { "label": "Enterprise Plan", "next": "enterprise" },
-        { "label": "Back", "next": "start" }
-      ]
-    },
-
-    "basic": {
-      "id": "basic",
+    "guidance": {
+      "id": "guidance",
       "type": "info",
-      "content": "Basic Plan starts at ₹15,000 for starter projects.",
+      "content": "Here’s what truly helps:\n\n• Start working with your child at home\n• Focus on listening and connection\n• Be consistent and patient\n\nThe biggest change happens when parents are guided properly.\n\nYou don’t need to do this alone 💙",
       "options": [
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "pricing" }
+        { "label": "Talk to an expert", "next": "booking_name" },
+        { "label": "Restart", "next": "start" }
       ]
     },
 
-    "pro": {
-      "id": "pro",
-      "type": "info",
-      "content": "Professional Plan starts at ₹50,000 for advanced projects.",
-      "options": [
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "pricing" }
-      ]
-    },
-
-    "enterprise": {
-      "id": "enterprise",
-      "type": "info",
-      "content": "Enterprise pricing is customized based on requirements.",
-      "options": [
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "pricing" }
-      ]
-    },
-
-    "support": {
-      "id": "support",
-      "type": "choice",
-      "content": "Choose support type:",
-      "options": [
-        { "label": "Technical Issue", "next": "technical" },
-        { "label": "Sales Inquiry", "next": "sales" },
-        { "label": "WhatsApp Support", "next": "whatsapp" },
-        { "label": "Back", "next": "start" }
-      ]
-    },
-
-    "technical": {
-      "id": "technical",
-      "type": "info",
-      "content": "Our technical team usually responds within 24 hours.",
-      "options": [
-        { "label": "Back", "next": "support" }
-      ]
-    },
-
-    "sales": {
-      "id": "sales",
-      "type": "info",
-      "content": "Our sales team can guide you through service selection.",
-      "options": [
-        { "label": "Book Demo", "next": "booking_date" },
-        { "label": "Back", "next": "support" }
-      ]
-    },
-
-    "whatsapp": {
-      "id": "whatsapp",
-      "type": "info",
-      "content": "WhatsApp support can be integrated here later.",
-      "options": [
-        { "label": "Back", "next": "support" }
-      ]
-    },
-
-    "booking_date": {
-      "id": "booking_date",
+    "booking_name": {
+      "id": "booking_name",
       "type": "input",
-      "content": "Please enter your preferred date for the demo (e.g. 2026-04-01):",
-      "dataKey": "booking_date",
-      "next": "booking_time"
+      "content": "I’d love to connect you with our expert.\n\nWhat’s your name?",
+      "dataKey": "name",
+      "next": "booking_phone"
     },
 
-    "booking_time": {
-      "id": "booking_time",
+    "booking_phone": {
+      "id": "booking_phone",
       "type": "input",
-      "content": "What time works best for you? (e.g. 10:00 AM):",
-      "dataKey": "booking_time",
+      "content": "Thank you 💙\n\nPlease share your phone number so we can reach you:",
+      "dataKey": "phone",
       "next": "booking_email"
     },
 
     "booking_email": {
       "id": "booking_email",
       "type": "input",
-      "content": "Please enter your email address so we can send you a confirmation:",
-      "dataKey": "booking_email",
+      "content": "Lastly, your email (optional but helpful):",
+      "dataKey": "email",
       "next": "booking_confirm"
     },
 
     "booking_confirm": {
       "id": "booking_confirm",
       "type": "terminal",
-      "content": "Thank you! We'll confirm your booking shortly. Our team will reach out to the email you provided."
+      "content": "Thank you for trusting us 💙\n\nOur team will reach out to you shortly and guide you step by step.\n\nYou’re not alone in this journey."
     }
   }
 }

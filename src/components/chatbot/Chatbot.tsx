@@ -11,8 +11,6 @@ export default function Chatbot() {
   const {
     currentNode,
     history,
-    isLoading,
-    error,
     onSelectOption,
     onInputSubmit,
     resetChat,
@@ -26,35 +24,27 @@ export default function Chatbot() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 w-full max-w-[350px]">
-      {/* Chat Window */}
+      
       {open && (
-        <div className="w-full bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200 flex flex-col animate-in fade-in zoom-in duration-200">
+        <div className="w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-[#E6E2FF] flex flex-col">
+          
           {/* Header */}
-          <div className="bg-blue-600 p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="size-10 rounded-full bg-white/20 flex items-center justify-center">
-                  🤖
-                </div>
-                <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-400 ring-2 ring-blue-600"></span>
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-sm leading-tight">
-                  SmartAssist
-                </h3>
-                <p className="text-white/80 text-xs">Online</p>
-              </div>
+          <div className="bg-[#7C6CF6] p-4 flex items-center justify-between">
+            <div>
+              <h3 className="text-white font-semibold text-sm">
+                ARULA Support
+              </h3>
+              <p className="text-white/80 text-xs">
+                You’re not alone 💜
+              </p>
             </div>
-            <button
-              onClick={() => setOpen(false)}
-              className="text-white text-lg hover:scale-110 transition-all"
-            >
+            <button onClick={() => setOpen(false)} className="text-white">
               ✕
             </button>
           </div>
 
           {/* Chat Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-100">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-100 bg-[#F4F2FF]">
             {history.map((msg, index) => (
               <div
                 key={index}
@@ -62,16 +52,11 @@ export default function Chatbot() {
                   msg.type === "user" ? "justify-end" : "items-end gap-2"
                 }`}
               >
-                {msg.type === "bot" && (
-                  <div className="size-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                    🤖
-                  </div>
-                )}
                 <div
-                  className={`p-3 rounded-xl text-sm max-w-[85%] ${
+                  className={`p-3 rounded-2xl text-sm max-w-[85%] ${
                     msg.type === "bot"
-                      ? "bg-slate-100 text-slate-800 rounded-bl-none"
-                      : "bg-blue-600 text-white rounded-br-none"
+                      ? "bg-white text-gray-700 shadow-sm"
+                      : "bg-[#7C6CF6] text-white"
                   }`}
                 >
                   {msg.content}
@@ -79,32 +64,15 @@ export default function Chatbot() {
               </div>
             ))}
 
-            {/* Error display */}
-            {error && (
-              <div className="pl-10 text-xs text-red-500">{error}</div>
-            )}
-
-            {/* Loading indicator */}
-            {isLoading && (
-              <div className="pl-10 text-xs text-slate-400">Thinking...</div>
-            )}
-
-            {/* Interactive area based on node type */}
             {currentNode.type === "info" || currentNode.type === "choice" ? (
               <OptionGrid
-                options={
-                  currentNode.type === "choice"
-                    ? currentNode.options
-                    : currentNode.options ?? []
-                }
+                options={currentNode.options ?? []}
                 onSelect={onSelectOption}
-                disabled={isLoading}
               />
             ) : currentNode.type === "input" ? (
               <InputCapture
                 node={currentNode as InputNode}
                 onSubmit={onInputSubmit}
-                disabled={isLoading}
               />
             ) : null}
 
@@ -112,27 +80,22 @@ export default function Chatbot() {
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-slate-100">
+          <div className="p-3 border-t border-[#E6E2FF]">
             <button
               onClick={resetChat}
-              className="w-full bg-blue-50 text-blue-600 py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition-all"
+              className="w-full text-sm text-[#5B4FE3] font-medium"
             >
-              Restart Chat
+              Start Again
             </button>
-            <div className="mt-2 text-center">
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest font-medium">
-                Powered by SmartAssist
-              </p>
-            </div>
           </div>
         </div>
       )}
 
-      {/* Floating Launcher */}
+      {/* Launcher */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="size-14 bg-blue-600 rounded-full shadow-lg flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all duration-200"
+          className="size-14 bg-[#7C6CF6] rounded-full text-white shadow-lg hover:scale-105 transition-all"
         >
           💬
         </button>
